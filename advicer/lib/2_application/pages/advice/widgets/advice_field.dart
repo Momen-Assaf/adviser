@@ -18,7 +18,7 @@ class AdviceField extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
           child: Text(
-            advice,
+            '''"$advice"''',
             style: themeData.textTheme.bodyLarge,
             textAlign: TextAlign.center,
           ),

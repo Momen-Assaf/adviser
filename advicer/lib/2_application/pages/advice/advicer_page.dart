@@ -1,3 +1,4 @@
+import 'package:advicer/2_application/core/widgets/error_message.dart';
 import 'package:advicer/2_application/pages/advice/widgets/advice_field.dart';
 import 'package:advicer/2_application/pages/advice/widgets/app_bar_widget.dart';
 import 'package:advicer/2_application/pages/advice/widgets/custom_button.dart';
@@ -17,12 +18,19 @@ class AdvicerPage extends StatelessWidget {
             children: [
               Expanded(
                 child: Center(
-                  child:
-                      AdviceField(themeData: themeData, advice: "I am an advice - your day will be good - or it wont be, since you are a bad person"),
+                  child: ErrorMessage(
+                      themeData: themeData, message: "haha stinkyy"),
+
+                  /*AdviceField(
+                    themeData: themeData,
+                    advice:
+                        "I am an advice - your day will be good - or it wont be, since you are a bad person",
+                  ),*/
+
                   /*CircularProgressIndicator(
                     color: themeData.colorScheme.secondary,
                   )*/
-          
+
                   /*Text(
                     "Your Advice is waiting for you",
                     style: themeData.textTheme.headlineLarge,
