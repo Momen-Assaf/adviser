@@ -13,7 +13,7 @@ class AdvicerPageWrapperProvider extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AdvicerBloc(),
-      child: AdvicerPage(),
+      child: const AdvicerPage(),
     );
   }
 }
