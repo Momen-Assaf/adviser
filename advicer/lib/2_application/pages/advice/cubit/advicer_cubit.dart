@@ -1,10 +1,15 @@
 import 'package:advicer/1_domain/entities/advice_entity.dart';
+import 'package:advicer/1_domain/failures/failures.dart';
 import 'package:advicer/1_domain/usecases/advice_usecases.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
 part 'advicer_state.dart';
+
+const generalFailureMessage = "Something went wrong";
+const serverFailureMessage = "Server error";
+const cacheFailureMessage = "Cache error";
 
 class AdvicerCubit extends Cubit<AdvicerCubitState> {
   AdvicerCubit() : super(AdvicerInitial());
@@ -19,10 +24,24 @@ class AdvicerCubit extends Cubit<AdvicerCubitState> {
     //for example get advice
     debugPrint("fake get advice triggered");
     // await Future.delayed(const Duration(seconds: 3), () {});
-    final AdviceEntity advice = await adviceUseCases.getAdvice();
+    final failureOrAdvice = await adviceUseCases.getAdvice();
     debugPrint("got advice");
 
-    emit(AdvicerLoadedState(advice: advice.advice));
-    // emit(AdvicerErrorState(message: "ERRRORRRRR"));
+    failureOrAdvice.fold(
+      (failure) =>
+          emit(AdvicerErrorState(message: _mapFailureToMessage(failure))),
+      (advice) => emit(AdvicerLoadedState(advice: advice.advice)),
+    );
+  }
+
+  String _mapFailureToMessage(Failures failure) {
+    switch (failure.runtimeType) {
+      case ServerFailure:
+        return serverFailureMessage;
+      case CacheFailure:
+        return cacheFailureMessage;
+      default:
+        return generalFailureMessage;
+    }
   }
 }
