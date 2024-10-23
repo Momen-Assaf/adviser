@@ -4,7 +4,6 @@ part of 'advicer_cubit.dart';
 sealed class AdvicerCubitState {
   const AdvicerCubitState();
 
-  @override
   List<Object?> get props => [];
 }
 
