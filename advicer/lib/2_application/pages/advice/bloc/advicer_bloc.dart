@@ -13,7 +13,7 @@ class AdvicerBloc extends Bloc<AdvicerEvent, AdvicerState> {
       //execute business logic
       //for example get advice
       debugPrint("fake get advice triggered");
-      await Future.delayed(Duration(seconds: 3), () {});
+      await Future.delayed(const Duration(seconds: 3), () {});
       debugPrint("got advice");
 
       emit(AdvicerLoadedState(advice: 'fake advice to test BLOC'));
