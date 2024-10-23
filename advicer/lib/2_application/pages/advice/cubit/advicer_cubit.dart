@@ -1,3 +1,4 @@
+import 'package:advicer/1_domain/entities/advice_entity.dart';
 import 'package:advicer/1_domain/usecases/advice_usecases.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
@@ -18,10 +19,10 @@ class AdvicerCubit extends Cubit<AdvicerCubitState> {
     //for example get advice
     debugPrint("fake get advice triggered");
     // await Future.delayed(const Duration(seconds: 3), () {});
-    final String advice = await adviceUseCases.getAdvice();
+    final AdviceEntity advice = await adviceUseCases.getAdvice();
     debugPrint("got advice");
 
-    emit(AdvicerLoadedState(advice: advice));
+    emit(AdvicerLoadedState(advice: advice.advice));
     // emit(AdvicerErrorState(message: "ERRRORRRRR"));
   }
 }
