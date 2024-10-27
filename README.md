@@ -1,2 +1,2 @@
 # Advicer
-This is a flutter project made as a practice implementation of the clean architecture
+This is a flutter project made as a practice implementation of the clean architecture, with testing in mind.
