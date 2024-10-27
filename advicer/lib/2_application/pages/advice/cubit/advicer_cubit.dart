@@ -21,7 +21,7 @@ class AdvicerCubit extends Cubit<AdvicerCubitState> {
 
     //execute business logic
     //for example get advice
-    debugPrint("fake get advice triggered");
+    debugPrint("Get advice triggered");
     // await Future.delayed(const Duration(seconds: 3), () {});
     final failureOrAdvice = await adviceUseCases.getAdvice();
     debugPrint("got advice");
